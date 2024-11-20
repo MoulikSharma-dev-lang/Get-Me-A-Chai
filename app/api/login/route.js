@@ -10,16 +10,16 @@ export async function POST(request) {
     try {
         connectDB()
         await LoginUser.create(data)
-        const token = jwt.sign({username: data.username, email: data.email}, process.env.JWT_SECRET)
+        const token = jwt.sign({ username: data.username, email: data.email }, process.env.JWT_SECRET)
         cookieStore.set("token", token, {
             httpOnly: true,
             sameSite: "strict",
             path: "/",
             maxAge: 60 * 60 * 24 * 7
         })
-        return NextResponse.json({data: "User logged in successfully!", success: true})
+        return NextResponse.json({ data: "User logged in successfully!", success: true })
     } catch (error) {
         console.log(error)
-        return NextResponse.json({data: "Error while logging in user", success: false, error: error})
+        return NextResponse.json({ data: "Error while logging in user", success: false, error: error })
     }
 }
