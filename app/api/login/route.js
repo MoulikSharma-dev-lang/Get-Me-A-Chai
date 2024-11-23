@@ -13,7 +13,7 @@ export async function POST(request) {
         const token = jwt.sign({ username: data.username, email: data.email }, process.env.JWT_SECRET)
         cookieStore.set("token", token, {
             httpOnly: true,
-            sameSite: "strict",
+            sameSite: "none",
             path: "/",
             maxAge: 60 * 60 * 24 * 7
         })
