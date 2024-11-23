@@ -15,8 +15,7 @@ export async function POST(request) {
             httpOnly: true,
             sameSite: "strict",
             path: "/",
-            maxAge: 60 * 60 * 24 * 7,
-            domain: ".onrender.com"
+            maxAge: 60 * 60 * 24 * 7
         })
         return NextResponse.json({ data: "User logged in successfully!", success: true })
     } catch (error) {
